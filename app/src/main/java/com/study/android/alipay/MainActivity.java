@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.AuthTask;
+import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
 import com.study.android.alipay.alipy.H5PayDemoActivity;
 import com.study.android.alipay.util.AuthResult;
@@ -45,8 +46,8 @@ public class MainActivity extends FragmentActivity {
     /** RSA2_PRIVATE 可以保证商户交易在更加安全的环境下进行，建议使用 RSA2_PRIVATE */
     /** 获取 RSA2_PRIVATE，建议使用支付宝提供的公私钥生成工具生成， */
     /** 工具地址：https://doc.open.alipay.com/docs/doc.htm?treeId=291&articleId=106097&docType=1 */
-    public static final String RSA2_PRIVATE = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAJ+1BILj7uAz55lQ54584uYGydfeeiMyTygQes+q1DZVAn5VUYkdiE03JvjKYWGjco/utgpitmZcCT9D+rz37f0spFjHIXgFrDFHG5yij+NcXhltLB0Kb7uiqqnXpVq5lvJvobC1piJLRVjQ5AY4BPkCJvHTrW6+V26dPW7srN1ZAgMBAAECgYBk7xdxzbIrukIV0F7324/fBs1MA8w3MFV8oaWsV2+VAvb3dt54BNUez8tukyEmfxEpTBl6yNY0LNifRkxSX3LlfTN5UQe+BphmrnJuOuKs9lzAX4uxhNnbkjFYXOT+h46veQNBdTJp+xiYj3N2pseuNE2NlW4Mlq2U53H4+G8uPQJBAN5a8prznbpCPnXXbAEIR7j1NbOI4U280A1wjHPfjUkXrS3BFMfutzSYT6ZqceL6LSdZG4fn4JiP7NEUSOtJqs8CQQC331vyTvmV6FyHDbVw03o7L4pE/PcEK67ehMsRJwwwZs0Buqs3iKjxN5Kv4tF24TGgeMQf7YUR25WrHPOH719XAkAApQbbCCXG6nY/5TX88scydBOJx7XPgeKgh1kA5P8F3Tm1Tj//LGP/lQl2FAzseYkz+gAobrWp+5DWMlbbx8TlAkBwnXmIF7yfhtgc01WcS7niRASwqip0QHjyymxBDiRWBLBs7bJt6eJnEr1hwk6+O8CUY0Ljtyq4PEAXtDyntgEzAkBTWNlNjxdICXW2dZWudRsE6wn82ujyK3B8ZeKC2CldcSAOzdtuAOJ/Kye5UvPKN9hc+gtVf0qllrQ5KC9rToNG";
-    public static final String RSA_PRIVATE = "";
+    public static final String RSA2_PRIVATE = "";
+    public static final String RSA_PRIVATE = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIyoF08yWli+tg5ibXuyq7HamvdEFLrjbJATe3lf3lNoxMfE7gdSWwEp2R1UxZg5J2WiaXXrnNxVXMeRlMpY7LIDHH7XVT5GEVulmg/2rjLKxTA7sh1kVkiNHxng25vSvUpCNUViHPumKpiVQrvolfVoJRQ/Y7ZKV0FEn+mz8WrBAgMBAAECgYAaA6iz/BMboMIZLPkkzKnWriDFJLFU02UrzH6ktyduc80ZSYHglsnAEFZYh2o4OjHgKUaqCZasZZlQS8uiFQpJp5RUhbDHROQxhXU/UKUCO55zBeLrFpHrz8hZ4V5IDAI+9Iax4MKwboDbxe/XfmlLU6CaQopG1ZqD+0Tjhxbr5QJBANMY9OFKIp/VqS4NqCYyPA1qFpMUvJ3jKySLiPaAZlLlm1id10y7rrtspE4pU6rAZj/huE4Tf6jb1O5zdtycAA8CQQCqk13RsFrI/NAmAfH3Cw6SQYKJCoHsgiT/OX6sYr18wLR+OROoWEHC5yISLgL2yi5NCQGF9+FOmTDIHuor9BgvAkEAlokSf+INJOwJtDS691oVZv+DT6mXBASujGYQ6rAPyAfCqwQMN8UTSsajuLVR289OWznM46iV/cWeZ9jhJ1r70wJAD+MZ4eXjDsU9Pc0AlFnbSZQAbHMmFrkoaP0Z50RrEauBJCB8zDksJtMQQVE3xXSfS12DXs7vlTp/aKQ4e0+I0QJAOHWD2hSTx51Sp3/AF5fImYPJhcGHN6z6h1WSNROS3oVTP26gPE7qyjr8vLzhRWaYJxAVBNFQxxWabbWlQZV8gA==";
 
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
@@ -104,6 +105,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
         setContentView(R.layout.activity_main);
     }
 
